@@ -57,10 +57,11 @@
         <div class ="w3-container w3-black">
             <h1 align="center">Clueless by Hoodunnit Corp.</h1>
         </div>
+        <div><h2>Make Suggestion</h2></div>
         <div>
             <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-                <div id="Killer" class="dropdown-content">
+                <button onclick="killersDropdown()" class="dropbtn">Killers</button>
+                <div id="killer" class="dropdown-content">
                     <a href="#green">Mr. Green</a>
                     <a href="#mustard">Col. Mustard</a>
                     <a href="#peacock">Mrs. Peacock</a>
@@ -69,6 +70,9 @@
                     <a href="#white">Mrs. White</a>
                 </div>
              </div>
+        </div>
+        <div>
+            <img align="center" src="/images/clue.svg"/>
         </div>
         <div class ="w3-container" height="250px">
             <form action="/" method="post" id="chat_form">
@@ -85,7 +89,7 @@
         <script src="/socket.io/socket.io.js"></script>
         <script>
              // Connecting to socket.io
-            var socket = io.connect('http://localhost:8080');
+            var socket = io.connect('http://localhost:3000');
 
             // The username is requested, sent to the server and displayed in the title
             var username = prompt('What\'s your username?');
@@ -114,6 +118,30 @@
             // Adds a message to the page
             function insertMessage(username, message) {
                 $('#chat_zone').prepend('<p><strong>' + username + '</strong> ' + message + '</p>');
+            }
+            function killersDropdown() {
+                document.getElementById("killer").classList.toggle("show");
+            }
+            function weaponsDropdown() {
+                document.getElementById("killer").classList.toggle("show");
+            }
+            function roomDropdown() {
+                document.getElementById("killer").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
             }
         </script>
     </body>
